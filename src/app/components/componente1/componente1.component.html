@@ -1,0 +1,75 @@
+<nav class="navbar navbar-dark bg-secondary">
+  <a class="navbar-brand" href="/">Angular component</a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col">{{'ID'}}  {{'Nombre'}}</div>
+            <div class="col">{{'Apellido'}}</div>
+            <div class="col">{{'Sexo'}}</div>
+            <div class="col">{{'Edad'}}</div>
+          </div>
+        </li>
+        <li *ngFor="let persona of personasArray" class="list-group-item list-group-item-action"
+            (click)="openForEdit(persona)" [class.active]="persona == selectedpersona">
+          <div class="row">
+            <div class="col"><span class="badge badge-primary">{{persona.id}}</span> {{persona.nombre}}</div>
+            <div class="col">{{persona.apellido}}</div>
+            <div class="col">{{persona.sexo}}</div>
+            <div class="col">{{persona.edad}}</div>
+          </div>
+        </li>
+      </ul>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Insert a new person!
+            <div>
+              <div class="form-group">
+                <input type="text" placeholder="nombre" [(ngModel)]="selectedpersona.nombre" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="apellido" [(ngModel)]="selectedpersona.apellido" class="form-control">
+              </div>
+              <div class="form-group">
+                <select name="select" class="form-control" [(ngModel)]="selectedpersona.sexo">
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>
+                <!--                <input type="text" placeholder="sexo" [(ngModel)]="selectedpersona.sexo" class="form-control">-->
+              </div>
+              <div class="form-group">
+                <input type="number" placeholder="edad" [(ngModel)]="selectedpersona.edad" class="form-control">
+              </div>
+              <button (click)="addOrEdit()" class="btn btn-block btn-success">submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-4">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col">{{'Nombre'}}</div>
+            <div class="col">{{'Apellido'}}</div>
+            <div class="col">{{'Sexo'}}</div>
+            <div class="col">{{'Edad'}}</div>
+          </div>
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <div class="row">
+            <div class="col">{{persona4.nombre}}</div>
+            <div class="col">{{persona4.apellido}}</div>
+            <div class="col">{{persona4.sexo}}</div>
+            <div class="col">{{persona4.edad}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
